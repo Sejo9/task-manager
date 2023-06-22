@@ -1,0 +1,43 @@
+.TaskContainer {
+    border-radius: 10px;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px #a3a3a3;
+    margin: 10px 0;
+    border: 2px solid #D9D9D9;
+}
+
+.TaskDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.TaskControls {
+    display: flex;
+    align-items: center;
+}
+
+p {
+    margin: 0 0 5px 0;
+}
+
+button {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #cecece;
+}
+
+@media (max-width: 600px){
+    button {
+        margin-left: 0;
+    }
+}
