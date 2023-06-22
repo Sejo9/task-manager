@@ -1,3 +1,4 @@
 package com.sejo.taskmanager.exceptions;
 
-public record TaskRequestError (String error){};
+public record TaskRequestError(String error) {
+};

@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class TaskExceptionHandler {
 
     @ExceptionHandler(value = {TaskRequestException.class})
-    public ResponseEntity<Object> handleTaskException(TaskRequestException e){
+    public ResponseEntity<Object> handleTaskException(TaskRequestException e) {
         HttpStatus status;
 
-        if(e.getExceptionType() == ExceptionType.NOT_FOUND){
+        if (e.getExceptionType() == ExceptionType.NOT_FOUND) {
             status = HttpStatus.NOT_FOUND;
         } else {
             status = HttpStatus.BAD_REQUEST;
         }
 
-        return new ResponseEntity<>(new TaskRequestError(e.getMessage()) , status);
+        return new ResponseEntity<>(new TaskRequestError(e.getMessage()), status);
     }
 }
