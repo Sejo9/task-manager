@@ -1,4 +1,5 @@
 .TaskContainer {
+    background-color: white;
     border-radius: 10px;
     display: flex;
     padding: 20px;
@@ -17,6 +18,10 @@
 .TaskControls {
     display: flex;
     align-items: center;
+}
+
+h3 {
+    margin: 0;
 }
 
 p {

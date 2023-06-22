@@ -6,7 +6,7 @@ import AddTask from "./components/AddTask/AddTask";
 import TaskList from "./components/TaskList/TaskList";
 
 function App() {
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
   const [refresh, setRefresh] = useState(0);
 
   const getTasks = async () => {
@@ -29,7 +29,7 @@ function App() {
     <div id="container">
       <Header />
       <AddTask refresh={refresh} setRefresh={setRefresh} />
-      <TaskList tasks={tasks}/>
+      <TaskList tasks={tasks} refresh={refresh} setRefresh={setRefresh}/>
     </div>
   );
 }

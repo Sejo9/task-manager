@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,8 +15,21 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
 
-    public List<Task> allTasks() {
-        return taskRepository.findAll();
+    public List<TaskResponse> allTasks() {
+        List<TaskResponse> tasks = new ArrayList<>();
+        
+        taskRepository.findAll().forEach((task) -> {
+            tasks.add(new TaskResponse(
+                    task.getId().toHexString(),
+                    task.getName(),
+                    task.getDescription(),
+                    task.getStatus(),
+                    task.getDate(),
+                    task.getTime()
+            ));
+        });
+
+        return tasks;
     }
 
     public Task createTask(Task task) {

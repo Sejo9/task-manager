@@ -17,7 +17,7 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks() {
+    public ResponseEntity<List<TaskResponse>> getAllTasks() {
         return new ResponseEntity<>(taskService.allTasks(), HttpStatus.OK);
     }
 

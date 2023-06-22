@@ -1,26 +1,62 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faSquareCheck } from "@fortawesome/free-solid-svg-icons";
-import React from 'react'
-import styled from "@emotion/styled";
-import './Task.css'
+import React from "react";
+import "./Task.css";
+import api from "../../api/axiosConfig";
 
-const Task = ({task}) => {
+const Task = ({ task, refresh, setRefresh }) => {
+  const completeTask = async () => {
+    let id = task.id;
+
+    const response = await api.put(`/${id}`);
+
+    console.log(response.data);
+
+    setRefresh(refresh + 1);
+  };
+
+  const deleteTask = async () => {
+    try {
+      const response = await api.delete(`/${task.id}`);
+
+      setRefresh(refresh + 1);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="TaskContainer">
-        <div className="TaskDetails">
-            <p><strong>Title: </strong>{task.title}</p>
-            <p><strong>Description: </strong>{task.description}</p>
-            <p><strong>Date: </strong>{task.date}</p>
-            <p><strong>Time: </strong>{task.time}</p>
-            <p><strong>Status: </strong>{task.status}</p>
-        </div>
-        <div className="TaskControls">
-            <button><FontAwesomeIcon icon={faSquareCheck} size="2xl" style={{color: "#75f94c"}} /></button>
-            <button><FontAwesomeIcon icon={faTrash} size="2xl" style={{color: "#eb3223"}} /></button>
-            
-        </div>
+      <div className="TaskDetails">
+        {task.name ? <h3>{task.name}</h3> : null}
+        {task.description ? <p>{task.description}</p> : null}
+        {task.date ? <p>{task.date}</p> : null}
+        {task.time ? <p>{task.time}</p> : null}
+        {task.status ? <p>{task.status}</p> : null}
+      </div>
+      <div className="TaskControls">
+        {task.status == "UNCOMPLETE" ? (
+          <button>
+            <FontAwesomeIcon
+              icon={faSquareCheck}
+              size="2xl"
+              style={{ color: "#75f94c" }}
+              onClick={() => completeTask()}
+            />
+          </button>
+        ) : null}
+        <button>
+          <FontAwesomeIcon
+            icon={faTrash}
+            size="2xl"
+            style={{ color: "#eb3223" }}
+            onClick={() => deleteTask()}
+          />
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Task
+export default Task;
