@@ -1,0 +1,35 @@
+#add-task-container{
+    display: grid;
+    padding: 20px 0;
+    grid-template-columns: 40vw 20vw 20vw;
+    grid-row-gap: 20px;
+    grid-column-gap: 2%;
+    justify-content: center;
+}
+
+input, textarea{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+}
+
+#desc {
+    grid-column: 1/4;
+}
+
+#add-btn{
+    grid-column: 3/4;
+}
+
+
+@media (max-width: 600px){
+    #add-task-container{
+        grid-template-columns: auto;
+        padding: 20px ;
+        justify-content: stretch;
+    }
+
+    #title, #date, #time, #desc, #add-btn{
+        grid-column: 1/2;
+    }
+}
