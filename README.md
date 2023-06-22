@@ -59,7 +59,7 @@ To create a .env file, follow these steps:
 
 6. The application can now utilize the variables defined in the .env file located in the `backend/src/main/resources` directory. 
 
-## Running the Spring Boot Application with Maven
+## Running the Spring Boot Backend Application with Maven
 
 To run the Spring Boot application using Maven, follow these steps:
 
