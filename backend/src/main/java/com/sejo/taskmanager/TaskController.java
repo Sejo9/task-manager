@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/tasks")
 @RequiredArgsConstructor
-@CrossOrigin("https://task-manager-frontend-production.up.railway.app/")
+@CrossOrigin("https://sejo-task-manager.netlify.app/")
 public class TaskController {
 
     private final TaskService taskService;
